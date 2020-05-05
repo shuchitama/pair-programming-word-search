@@ -1,8 +1,35 @@
-const wordSearch = (letters, word) => { 
-    const horizontalJoin = letters.map(ls => ls.join(''))
-    for (l of horizontalJoin) {
-        if (l.includes(word)) return true
+const transpose = function (matrix) {
+  const rows = matrix[0].length;
+  let result = [];
+  for (let i = 0; i < rows; i++) {
+    result.push([]);
+  }
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < rows; j++) {
+      result[j].push([matrix[i][j]]);
     }
-}
+  }
+  return result;
+};
 
-module.exports = wordSearch
+const wordSearch = (letters, word) => {
+  const horizontalJoin = letters.map((ls) => ls.join(""));
+  const transposed = transpose(letters);
+  const verticalJoin = transposed.map((ls) => ls.join(""));
+  //   console.log(horizontalJoin);
+  //   console.log(verticalJoin);
+
+  for (line of horizontalJoin) {
+    if (line.includes(word)) {
+      return true;
+    }
+  }
+  for (line of verticalJoin) {
+    if (line.includes(word)) {
+      return true;
+    }
+  }
+  return false;
+};
+
+module.exports = wordSearch;
