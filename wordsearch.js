@@ -13,11 +13,9 @@ const transpose = function (matrix) {
 };
 
 const wordSearch = (letters, word) => {
+  if (letters.length === 0) return false;
   const horizontalJoin = letters.map((ls) => ls.join(""));
-  const transposed = transpose(letters);
-  const verticalJoin = transposed.map((ls) => ls.join(""));
-  //   console.log(horizontalJoin);
-  //   console.log(verticalJoin);
+  const verticalJoin = transpose(letters).map((ls) => ls.join(""));
 
   for (line of horizontalJoin) {
     if (line.includes(word)) {

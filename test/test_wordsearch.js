@@ -23,7 +23,7 @@ describe("#wordSearch()", function () {
     assert.isFalse(result);
   });
 
-  it("should return true if the word is present", function () {
+  it("should return true if the word is present horizontally", function () {
     const result = wordSearch(
       [
         ["A", "W", "C", "F", "Q", "U", "A", "L"],
@@ -42,7 +42,7 @@ describe("#wordSearch()", function () {
     assert.isTrue(result);
   });
 
-  it("should return true if the word is present", function () {
+  it("should return true if the word is present vertically", function () {
     const result = wordSearch(
       [
         ["A", "W", "C", "F", "Q", "U", "A", "L"],
@@ -59,5 +59,11 @@ describe("#wordSearch()", function () {
     );
 
     assert.isTrue(result);
+  });
+
+  it("should return false if the word matrix is empty", function () {
+    const result = wordSearch([], "YEAHBOI");
+
+    assert.isFalse(result);
   });
 });
